@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-5" routerLink="home">
+      <img src="./assets/imgs/freshcart-logo.svg" alt="logo"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active-link">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active-link">cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/wishlist" routerLinkActive="active-link">Wish List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/product" routerLinkActive="active-link">Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/categories" routerLinkActive="active-link">categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/brands" routerLinkActive="active-link">brands</a>
+        </li>
+      </ul>
+      <ul
+        class="navbar-nav ms-auto position-relative d-flex justify-content-between align-items-center"
+      >
+        <li class="nav-item">
+          <a class="nav-link position-relative" routerLink="/cart">
+            <i class="fa-solid fa-cart-shopping fs-3"></i>
+            <div class="badge position-absolute text-white top-0 end-0 bg-main">
+              {{ cartNum }}
+            </div></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            (click)="rToken()"
+            class="p-3 ms-2 me-5"
+            routerLink="login"
+            routerLinkActive="active-link"
+            >log out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

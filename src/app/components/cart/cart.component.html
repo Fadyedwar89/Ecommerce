@@ -1,0 +1,57 @@
+<section>
+  @if (cartData.data!==undefined) {
+  <div class="container py-5 my-5 p-5 bg-light rounded">
+    <div class="d-flex justify-content-between mb-4">
+      <h2>Cart Shop</h2>
+      <button class="btn btn-primary btn-lg">
+        <a [routerLink]="['/check_out', cartData.cartId]" class="text-decoration-none text-white"
+          >check out</a
+        >
+      </button>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h5>
+        total price: <span class="text-green">{{ cartData.data.totalCartPrice }} </span>
+      </h5>
+      <h5>
+        total number of items: <span class="text-green">{{ cartData.numOfCartItems }}</span>
+      </h5>
+    </div>
+    @for (product of cartData.data.products; track $index) {
+    <div class="row border-bottom my-3 d-flex align-items-center p-2">
+      <div class="col-md-2">
+        <img alt="" class="w-100" [src]="product.product.imageCover" />
+      </div>
+      <div class="col-md-10 d-flex justify-content-between">
+        <div>
+          <h5>{{ product.product.title }}</h5>
+          <h6>{{ product.price }} EGP</h6>
+          <button class="btn btn-sm m-0 p-0 text-danger" (click)="clear(product.product.id)">
+            <i class="fa fa-trash"></i> Remove
+          </button>
+        </div>
+        <div>
+          <button
+            class="btn h btn-md btn-small"
+            (click)="updateToCart(product.product.id, product.count + 1)"
+          >
+            +</button
+          ><span class="mx-3">{{ product.count }}</span
+          ><button
+            class="btn h btn-md btn-small"
+            (click)="updateToCart(product.product.id, product.count - 1)"
+          >
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+
+    <button class="btn-small btn btn-lg d-block mx-auto" (click)="clearAll()">
+      Clear Your Cart
+    </button>
+  </div>
+  }
+</section>

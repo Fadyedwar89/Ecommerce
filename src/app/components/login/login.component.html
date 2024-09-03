@@ -1,0 +1,49 @@
+<div class="my-5 p-5">
+  <h2 class="my-4">Login now</h2>
+
+  <form [formGroup]="loginForm" (submit)="loginSubmit()">
+    <div class="">
+      <label for="email">Email: </label>
+      <input
+        class="form-label"
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="email"
+      />
+      @if ( loginForm.get('email')?.errors && loginForm.get('email')?.touched ) {
+      <div class="alert alert-danger mt-3" role="alert">
+        @if(loginForm.get('email')?.getError('required')) { required } @else if
+        (loginForm.get('email')?.getError('email')) {email pattern is invalid}
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="password">password: </label>
+      <input
+        class="form-label"
+        formControlName="password"
+        type="password"
+        class="form-control"
+        id="password"
+      />
+      @if ( loginForm.get('password')?.errors && loginForm.get('password')?.touched ) {
+      <div class="alert alert-danger mt-3" role="alert">
+        @if(loginForm.get('password')?.getError('required')) { required } @else if
+        (loginForm.get('password')?.getError('pattern')) {password pattern is invalid}
+      </div>
+      }
+    </div>
+    <a class="forget h5" routerLink="/forgotPasswords">forget your password ?</a>
+
+    <button [disabled]="loginForm.invalid || loading" class="d-block btn-main ms-auto mb-5">
+      Login now@if (loading) {
+      <i class="ms-2 fas fa-spin fa-spinner"></i>
+      }
+    </button>
+
+    @if ( msgError) {
+    <div class="alert alert-danger mt-3" role="alert">{{ msgError }}</div>
+    }
+  </form>
+</div>

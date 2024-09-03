@@ -1,0 +1,48 @@
+<div class="w-75 mx-auto">
+  <form [formGroup]="payForm" (submit)="PaymentSubmit()">
+    <label for="details">Details</label
+    ><input
+      type="text"
+      id="details"
+      formControlName="details"
+      class="form-control mb-3 ng-untouched ng-pristine ng-invalid"
+    />@if ( payForm.get('details')?.errors && payForm.get('details')?.touched ) {
+    <div class="alert alert-danger mt-3" role="alert">
+      @if(payForm.get('details')?.getError('required')){ required } 
+    @else if(payForm.get('details')?.getError('minlength')) {details Should be more than or equal 3
+      chars} @else if (payForm.get('details')?.getError('maxlength')) {details Should be less than
+      or equal 20 chars}
+    </div>}
+    
+  <label for="phone">phone</label>
+    
+    <input
+      type="tel"
+      id="phone"
+      formControlName="phone"
+      class="form-control mb-3 ng-untouched ng-pristine ng-invalid"
+    />@if ( payForm.get('phone')?.errors && payForm.get('phone')?.touched ) {
+    <div class="alert alert-danger mt-3" role="alert">
+      @if(payForm.get('phone')?.getError('required')) { required } @else if
+      (payForm.get('phone')?.getError('pattern')) {invalid egyptian number }
+    </div>
+    }
+    <label for="city">city</label>
+    <input
+      type="text"
+      id="city"
+      formControlName="city"
+      class="form-control mb-3 ng-untouched ng-pristine ng-invalid"
+    />
+    @if ( payForm.get('city')?.errors && payForm.get('city')?.touched ) {
+    <div class="alert alert-danger mt-3" role="alert">
+      @if(payForm.get('city')?.getError('required')) { required }
+    </div>
+    }
+    <button class="btn btn-outline-info w-100 my-5" [disabled]="payForm.invalid || loading">
+      Pay now@if (loading) {
+      <i class="fas fa-spin fa-spinner"></i>
+      }
+    </button>
+  </form>
+</div>

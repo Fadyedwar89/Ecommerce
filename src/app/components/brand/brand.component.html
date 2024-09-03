@@ -1,0 +1,19 @@
+<section>
+  <div class="container">
+    <div class="row g-4">
+      <div class="text-center text-main">
+        <h1>All Brands</h1>
+      </div>
+      @for (brand of brandList; track brand._id) {
+      <div class="col-md-3">
+        <div
+          class="cursor-pointer border border-1 border-opacity-10 rounded-1 border-black product d-flex flex-column align-items-center justify-content-center h-100"
+        >
+          <img [src]="brand.image" class="w-100" [alt]="brand.name" />
+          <p class="text-black my-3">{{ brand.name.split(" ", 3).join(" ") }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<section class="">
+  <div class="container">
+    <div class="row g-4">
+      @for (categories of categoriesList; track categories._id) {
+      <div class="col-md-4">
+        <div
+          class="cursor-pointer border border-1 border-opacity-10 rounded-1 border-black product d-flex flex-column align-items-center justify-content-center h-100"
+        >
+          <img
+            [src]="categories.image"
+            class="ratio-4x3 w-100"
+            height="280px"
+            [alt]="categories.name"
+          />
+          <p class="text-main h3 my-3">{{ categories.name.split(" ", 3).join(" ") | titlecase }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
